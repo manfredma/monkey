@@ -2,24 +2,41 @@ package main
 
 import (
 	"fmt"
+	"monkey/repl"
+	"os"
+	"os/user"
 )
 
-//TIP To run your code, right-click the code and select <b>Run</b>. Alternatively, click
-// the <icon src="AllIcons.Actions.Execute"/> icon in the gutter and select the <b>Run</b> menu item from here.
-
 func main() {
-	//TIP Press <shortcut actionId="ShowIntentionActions"/> when your caret is at the underlined or highlighted text
-	// to see how GoLand suggests fixing it.
-	s := "gopher"
-	fmt.Println("Hello and welcome, %s!", s)
-
-	for i := 1; i <= 5; i++ {
-		//TIP You can try debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-		// for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>. To start your debugging session,
-		// right-click your code in the editor and select the <b>Debug</b> option.
-		fmt.Println("i =", 100/i)
+	usr, err := user.Current()
+	if err != nil {
+		panic(err)
 	}
+	fmt.Printf("Hello %s! This is the Monkey programming language!\n", usr.Username)
+	fmt.Printf("Feel free to type in commands\n")
+	repl.Start(os.Stdin, os.Stdout)
 }
 
-//TIP See GoLand help at <a href="https://www.jetbrains.com/help/go/">jetbrains.com/help/go/</a>.
-// Also, you can try interactive lessons for GoLand by selecting 'Help | Learn IDE Features' from the main menu.
+/**
+$ go run main.go
+Hello mrnugget! This is the Monkey programming language!
+Feel free to type in commands
+>> let add = fn(x, y) { x + y; };
+{Type:LET Literal:let}
+{Type:IDENT Literal:add}
+{Type:= Literal:=}
+{Type:FUNCTION Literal:fn}
+{Type:( Literal:(}
+{Type:IDENT Literal:x}
+{Type:, Literal:,}
+{Type:IDENT Literal:y}
+{Type:) Literal:)}
+{Type:{ Literal:{}
+{Type:IDENT Literal:x}
+{Type:+ Literal:+}
+{Type:IDENT Literal:y}
+{Type:; Literal:;}
+{Type:} Literal:}}
+{Type:; Literal:;}
+>>
+*/
