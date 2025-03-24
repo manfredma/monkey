@@ -39,7 +39,7 @@ func (b *Boolean) Type() ObjectType {
 
 type Null struct{}
 
-func (n *Null) Type() string {
+func (n *Null) Type() ObjectType {
 	return NULL_OBJ
 }
 func (n *Null) Inspect() string {
