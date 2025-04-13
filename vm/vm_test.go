@@ -97,7 +97,6 @@ func TestIntegerArithmetic(t *testing.T) {
 	runVmTests(t, tests)
 }
 
-
 func TestBooleanExpressions(t *testing.T) {
 	tests := []vmTestCase{
 		{"true", true},
@@ -130,8 +129,8 @@ func TestBooleanExpressions(t *testing.T) {
 	runVmTests(t, tests)
 }
 
-func testBooleanObject(expected bool, actual object.Object) error{
-	result, ok := actual.(*object.Boolean) 
+func testBooleanObject(expected bool, actual object.Object) error {
+	result, ok := actual.(*object.Boolean)
 	if !ok {
 		return fmt.Errorf("object is not Boolean. got=%T (%+v)", actual, actual)
 	}

@@ -109,7 +109,7 @@ func (c *Compiler) Compile(node ast.Node) error {
 			c.emit(code.OpBang)
 		case "-":
 			c.emit(code.OpMinus)
-			default :
+		default:
 			return fmt.Errorf("unknown operator: %s", node.Operator)
 		}
 	}
